@@ -1,26 +1,33 @@
 import * as THREE from "three";
-import { useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { useFrame } from "@react-three/fiber";
 import { Sparkles, useCursor } from "@react-three/drei";
 import { easing } from "maath";
 import { useControls } from "leva";
 
+const GeometryMap = {
+  boxGeometry: THREE.BoxGeometry,
+  sphereGeometry: THREE.SphereGeometry,
+  torusKnotGeometry: THREE.TorusKnotGeometry,
+  dodecahedronGeometry: THREE.DodecahedronGeometry,
+  icosahedronGeometry: THREE.IcosahedronGeometry,
+  torusGeometry: THREE.TorusGeometry,
+};
+
 export function Ball({ isActive, sectionGeometry, params, color, ...props }) {
   const ref = useRef();
   const [isHovered, setIsHovered] = useState(false);
 
-  const GeometryMap = {
-    boxGeometry: THREE.BoxGeometry,
-    sphereGeometry: THREE.SphereGeometry,
-    torusKnotGeometry: THREE.TorusKnotGeometry,
-    dodecahedronGeometry: THREE.DodecahedronGeometry,
-    icosahedronGeometry: THREE.IcosahedronGeometry,
-    torusGeometry: THREE.TorusGeometry,
-  };
+  // Create the geometry once instead of on every render (e.g. on each hover)
+  const geometryInstance = useMemo(
+    () => new GeometryMap[sectionGeometry](...params),
+    [sectionGeometry, params]
+  );
 
-  const geometryInstance = new GeometryMap[sectionGeometry](...params);
+  // Free GPU memory when the geometry is replaced or the ball unmounts
+  useEffect(() => () => geometryInstance.dispose(), [geometryInstance]);
 
-  const onHover = (e) => {
+  const onHover = () => {
     setIsHovered(true);
   };
 
@@ -52,15 +59,10 @@ export function Ball({ isActive, sectionGeometry, params, color, ...props }) {
 
   return (
     <mesh
-      onPointerOver={(e) => {
-        onHover(e);
-      }}
+      onPointerOver={onHover}
       onPointerOut={() => setIsHovered(false)}
-      className={isHovered ? "active" : ""}
       {...props}
       ref={ref}
-      radius={0.75}
-      side={THREE.DoubleSide}
       geometry={geometryInstance}
     >
       <meshPhysicalMaterial

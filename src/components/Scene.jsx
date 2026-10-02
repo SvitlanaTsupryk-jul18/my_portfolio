@@ -5,7 +5,6 @@ import { easing, geometry } from "maath";
 import { EffectComposer, Bloom } from "@react-three/postprocessing";
 
 import { useControls } from "leva";
-import { useEffect } from "react";
 
 extend(geometry);
 
@@ -13,13 +12,22 @@ import { Section, sections } from "./Section";
 import { Diamond } from "./Diamond";
 import { ActiveCard } from "./ActiveCard";
 
-export function Scene({ children, ...props }) {
+export function Scene(props) {
   const ref = useRef();
   const scroll = useScroll();
   const [active, setActive] = useState(null);
+  const textMaterialRef = useRef();
 
   useFrame((state, delta) => {
     ref.current.rotation.y = -scroll.offset * (Math.PI * 2);
+
+    // Fade the title in over 1 second without triggering React re-renders
+    const textMaterial = textMaterialRef.current;
+    if (textMaterial) {
+      textMaterial.opacity =
+        active === null ? Math.min(textMaterial.opacity + delta, 1) : 0;
+    }
+
     state.events.update();
     easing.damp3(
       state.camera.position,
@@ -35,29 +43,8 @@ export function Scene({ children, ...props }) {
     setActive(null);
   };
 
-  const [textOpacity, setTextOpacity] = useState(0);
   const { size } = useThree();
   const scaleFactor = size.width < 768 ? 0.75 : 1;
-
-  useEffect(() => {
-    if (active === null) {
-      let frame;
-      let start = null;
-      const duration = 1000;
-      function animate(timestamp) {
-        if (!start) start = timestamp;
-        const progress = Math.min((timestamp - start) / duration, 1);
-        setTextOpacity(progress);
-        if (progress < 1) {
-          frame = requestAnimationFrame(animate);
-        }
-      }
-      frame = requestAnimationFrame(animate);
-      return () => cancelAnimationFrame(frame);
-    } else {
-      setTextOpacity(0);
-    }
-  }, [active]);
 
   const config = useControls("Bloom", {
     intensity: { value: 0.7, min: 0, max: 1.5, step: 0.01 },
@@ -80,7 +67,7 @@ export function Scene({ children, ...props }) {
           scale={[scaleFactor, scaleFactor, scaleFactor]}
         >
           {active === null && `               Svitlana\nFrontend developer`}
-          <meshNormalMaterial transparent opacity={textOpacity} />
+          <meshNormalMaterial ref={textMaterialRef} transparent opacity={0} />
         </Text3D>
       </Center>
       {sections.map((item, index) => (

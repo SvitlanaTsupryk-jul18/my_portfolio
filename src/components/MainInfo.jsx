@@ -22,7 +22,7 @@ export const AboutInfo = () => (
     </p>
     <p>
       I am successful in creating visually appealing and user-friendly websites
-      with animations with with high loading speed. Always open to learning new
+      with animations with high loading speed. Always open to learning new
       technologies. Interested in the possibility of growth and professional
       development in the environment of high-class specialists.
     </p>
@@ -185,7 +185,7 @@ export const SkillsInfo = () => (
       Vue.js, Vuex, Vue Router
     </p>
     <p>
-      <FaReact /> React, Readux, React Router
+      <FaReact /> React, Redux, React Router
     </p>
     <p>
       <BiLogoTypescript /> Typescript
