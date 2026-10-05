@@ -16,7 +16,6 @@ export function Section({
   i,
   active,
   category,
-  data,
   from = 0,
   len = Math.PI * 2,
   radius = 5.25,
@@ -29,7 +28,8 @@ export function Section({
   const { size } = useThree();
   const scaleFactor = size.width < 768 ? 0.65 : 1;
   const amount = Math.round(len * 5);
-  const textPosition = from + (amount / 2 / amount) * len;
+  // Label sits in the middle of the section arc
+  const textPosition = from + len / 2;
   const angle = from + len / amount;
 
   const handleClick = (e) => {

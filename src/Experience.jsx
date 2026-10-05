@@ -9,9 +9,6 @@ import { Scene } from "./components/Scene";
 
 export function Experience() {
   const config = useControls("Scene", {
-    directionalLightIntensity: { value: 4, min: 1, max: 100000, step: 0.5 },
-    ambientLightIntensity: { value: 10, min: 1, max: 100000, step: 0.5 },
-    ambientLightColor: "white",
     backgroundIntensity: { value: 1, min: 0.163, max: 2, step: 0.1 },
     environmentIntensity: { value: 0.8, min: 0.163, max: 2, step: 0.1 },
     // backgroundIntensity: { value: 1.6, min: 0.163, max: 2, step: 0.1 },
@@ -28,10 +25,6 @@ export function Experience() {
   return (
     <>
       <color attach="background" args={["#e8e8f2"]} />
-      <ambientLight
-        intensity={config.ambientLight}
-        color={config.ambientLightColor}
-      />
       <ScrollControls pages={config.pages} infinite maxSpeed={config.maxSpeed}>
         <Scene
           position={[0, 1.5, 0]}

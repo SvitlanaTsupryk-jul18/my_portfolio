@@ -21,7 +21,7 @@ body {
   font-family: "Inter";
   background: #fdfdfd;
 }
-canvas{    width: 100%;}
+
 a {
   pointer-events: all;
   color: black;
@@ -47,8 +47,9 @@ p {
 
 canvas {
   opacity: 0;
-  touch-action: none;
-  animation: fade-in 5s ease 1s forwards;
+  // Short delay hides the first frames while shaders compile
+  animation: fade-in 1.5s ease 0.3s forwards;
+  width: 100%;
   height: 100%;
   position: fixed;
   top: 0;
@@ -75,12 +76,12 @@ canvas {
 }
 
 .innerHtml {
-  width: 280px;
+  width: clamp(280px, 25vw, 320px);
   height: 420px;
   margin-top: 100px;
   transition: 0.3s all ease-in-out;
   border-radius: 4px;
-  padding: 26px;
+  padding: clamp(16px, 4vw, 26px);
   color: white;
   box-shadow: 2px 2px 4px #808080ba;
 }
@@ -101,15 +102,6 @@ canvas {
   flex-direction: column;
   justify-content: space-around;
   height: 100%;
-}
-
-@keyframes fade-in {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 100;
-  }
 }
 
 @keyframes backInUp {
@@ -154,16 +146,53 @@ h3 {
   }
 }
 
-.expirience p,
+.experience p,
 .projects p {
   font-size: 14px;
+}
+
+.experience h3,
+.projects h3 {
+  font-size: 16px;
+  margin-bottom: 2px;
+}
+
+.experience {
+  // Scroll inside the card if content is taller than the card
+  max-height: 100%;
+  overflow-y: auto;
+
+  h3 {
+    text-align: left;
+  }
+
+  .job + .job {
+    margin-top: 14px;
+  }
+
+  .job-meta {
+    font-size: 12px;
+    padding: 2px 0 0;
+    opacity: 0.85;
+  }
+
+  ul {
+    margin: 6px 0;
+    padding-left: 16px;
+  }
+
+  li {
+    font-size: 13px;
+    line-height: 1.35;
+    margin-bottom: 4px;
+  }
 }
 
 .projects {
   color: black;
   h3 {
     margin-top: -6px;
-    margin-bottom: 6px;
+    margin-bottom: 2px;
   }
   a {
     margin-bottom: 0;
@@ -183,6 +212,7 @@ h3 {
     flex-shrink: 0;
   }
 }
+
 .contact .link svg {
   width: 24px;
   height: 24px;
@@ -204,6 +234,10 @@ h3 {
 }
 
 .skills {
+  h3 {
+    margin-bottom: 5px;
+  }
+
   p {
     display: flex;
     align-items: center;

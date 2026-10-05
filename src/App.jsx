@@ -6,12 +6,15 @@ import { Bvh } from "@react-three/drei";
 import { Loader } from "./components/Loader";
 
 export const App = () => (
-  <Suspense fallback={<Loader />}>
-    <Canvas dpr={[1, 1.5]} fallback={<div>Sorry no WebGL supported!</div>}>
-      <Bvh>
-        <Experience />
-      </Bvh>
-      <Leva hidden />
-    </Canvas>
-  </Suspense>
+  <>
+    {/* Leva renders DOM, so it must live outside the Canvas. Visible only in dev mode */}
+    <Leva hidden={!import.meta.env.DEV}  />
+    <Suspense fallback={<Loader />}>
+      <Canvas dpr={[1, 1.5]} fallback={<div>Sorry no WebGL supported!</div>}>
+        <Bvh>
+          <Experience />
+        </Bvh>
+      </Canvas>
+    </Suspense>
+  </>
 );

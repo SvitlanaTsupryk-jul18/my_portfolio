@@ -12,8 +12,8 @@ function Root() {
         <MdEmail style={{ display: 'inline-block', marginBottom: -3, marginRight: 10, width: 20, height: 20, fill: '#0f4857' }} />
           Svitlana Tsupryk
         </a>
-        <div style={{ position: 'absolute', top: 50, right: 40, fontSize: '20px', color: '#0f4857', fontWeight: 'bold' }}>Scroll &#x21e1;&#x21e3;</div>
-        <div style={{ position: 'absolute', top: 50, left: 40, fontSize: '20px', color: '#0f4857', fontWeight: 'bold' }} href="#">Click on ball &#x2198;</div>
+        <div style={{ position: 'absolute', top: 70, right: 40, fontSize: '20px', color: '#0f4857', fontWeight: 'bold' }}>Scroll &#x21e1;&#x21e3;</div>
+        <div style={{ position: 'absolute', top: 70, left: 40, fontSize: '20px', color: '#0f4857', fontWeight: 'bold' }}>Click on ball &#x2198;</div>
       </div>
     </>
   )
