@@ -55,6 +55,7 @@ export function Ball({ isActive, sectionGeometry, params, color, ...props }) {
     sparclesCount: { value: 30, min: 0, max: 100, step: 10 },
     sparclesSize: { value: 2, min: 0, max: 10, step: 0.1 },
     sparclesSpeed: { value: 1, min: 0, max: 10, step: 0.1 },
+    glowIntensity: { value: 2.5, min: 0, max: 6, step: 0.1 },
   });
 
   return (
@@ -78,12 +79,14 @@ export function Ball({ isActive, sectionGeometry, params, color, ...props }) {
         reflectivity={config.reflectivity}
         clearcoat={config.clearcoat}
         clearcoatRoughness={config.clearcoatRoughness}
-        emissive={[1.2, 0.8, 1.2]}
-        emissiveIntensity={isActive ? 0.9 : 0}
+        // Glow in the figure's own color. Intensity must push it above the Bloom threshold
+        emissive={color}
+        emissiveIntensity={isActive ? config.glowIntensity : 0}
       />
 
       {isActive && (
         <Sparkles
+          color="white"
           opacity={0.8}
           count={config.sparclesCount}
           scale={config.sparclesSize}

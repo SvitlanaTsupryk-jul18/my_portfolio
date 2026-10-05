@@ -6,9 +6,16 @@ import {
   FaHtml5,
   FaSass,
   FaFigma,
+  FaFileDownload,
 } from "react-icons/fa";
 import { BsPhoneFill, BsBootstrap } from "react-icons/bs";
-import { SiMinutemailer, SiGhost, SiJira, SiThreedotjs } from "react-icons/si";
+import {
+  SiMinutemailer,
+  SiGhost,
+  SiJira,
+  SiThreedotjs,
+  SiAstro,
+} from "react-icons/si";
 import { BiLogoTypescript } from "react-icons/bi";
 import { RiJavascriptLine } from "react-icons/ri";
 import { MdEmail } from "react-icons/md";
@@ -17,37 +24,62 @@ export const AboutInfo = () => (
   <div className="in">
     <h3>Hello!</h3>
     <p>
-      My passion is FrontEnd, and I worked on a product company team for 3
-      years.
+    My passion is front-end. I have worked in product companies for over
+    3 years. I am successful in creating visually appealing and
+    user-friendly websites where beauty meets usability: smooth animations, responsive layouts and high loading speed.
     </p>
     <p>
-      I am successful in creating visually appealing and user-friendly websites
-      with animations with high loading speed. Always open to learning new
-      technologies. Interested in the possibility of growth and professional
-      development in the environment of high-class specialists.
+      At work I used JavaScript, Vue, Astro and GSAP. In my own projects I build
+      with React and create interactive 3D with Three.js and React Three Fiber,
+      like this portfolio. 
+      </p>
+      <p>I'm looking to grow professionally in a team of skilled specialists.
     </p>
   </div>
 );
 
 export const ExperienceInfo = () => (
-  <div className="in expirience">
-    <h3>Frontend developer at Nethunt CRM</h3>
-    <p>
-      - Developed and maintained the company's multilingual website from
-      scratch.
-      <br></br>- Collaborated with a marketing team and designers to create a
-      modern responsive website and improve it promptly.<br></br>- Implemented
-      our specially designed theme in the blog based on CMS Ghost.<br></br>-
-      Added interesting animation for more interactivity.<br></br>- Optimized
-      website performance.<br></br>- Taking part in creating the front-end web
-      application using Vue.js and also created the page by myself.
-    </p>
+  <div className="in experience">
+    <div className="job">
+      <h3>Front-End Developer</h3>
+      <p className="job-meta">Checkbox · 01.2026 – 08.2026</p>
+      <ul>
+        <li>
+          Built a prototype of an animated marketing website with Astro and GSAP
+        </li>
+        <li>Created a custom Ghost blog theme from scratch</li>
+      </ul>
+    </div>
+    <div className="job">
+      <h3>Front-End Developer</h3>
+      <p className="job-meta">NetHunt CRM · 2021 – 2024</p>
+      <ul>
+        <li>
+          Developed and maintained the multilingual company website from scratch
+        </li>
+        <li>
+          Worked with marketing and design teams on a responsive website, added
+          animations
+        </li>
+        <li>
+          Contributed to the Vue.js web app and built a page independently
+        </li>
+        <li>Optimized website performance, reducing load time</li>
+      </ul>
+    </div>
   </div>
 );
 
 export const ProjectsInfo = () => (
   <div className="in projects">
     <h3>My works</h3>
+    <p>
+      <a target="_blank" href="https://checkbox.ua/blog/" className="link">
+        <SiGhost />
+        Ghost blog &#10230;
+      </a>
+      <span>Ghost CMS with custom theme</span>
+    </p>
     <p>
       <a target="_blank" href="https://nethunt.com/" className="link">
         <svg
@@ -71,11 +103,15 @@ export const ProjectsInfo = () => (
       <span>JavaScript, HTML, CSS, Express.js</span>
     </p>
     <p>
-      <a target="_blank" href="https://nethunt.com/blog/" className="link">
-        <SiGhost />
-        Ghost blog &#10230;
+      <a
+        target="_blank"
+        href="https://svitlanatsupryk-jul18.github.io/Astro-project/"
+        className="link"
+      >
+        <SiAstro />
+        Astro website prototype &#10230;
       </a>
-      <span>Ghost CMS with custom theme</span>
+      <span>Astro, GSAP animation</span>
     </p>
     <p>
       <a target="_blank" href="https://nethunt.ua/templates" className="link">
@@ -106,7 +142,7 @@ export const ProjectsInfo = () => (
       </a>
       <span>React, pagination and authentication</span>
     </p>
-    <p>
+    {/* <p>
       <a
         target="_blank"
         href="https://svitlanatsupryk-jul18.github.io/react-typescript-form/contact"
@@ -116,7 +152,7 @@ export const ProjectsInfo = () => (
         Contact form &#10230;
       </a>
       <span>React, React Router, TypeScript</span>
-    </p>
+    </p> */}
     <p>
       <a
         target="_blank"
@@ -134,6 +170,15 @@ export const ProjectsInfo = () => (
 export const ContactsInfo = () => (
   <div className="in contact">
     <h3>Let`s talk</h3>
+    <a
+      target="_blank"
+      rel="noopener noreferrer"
+      href="https://drive.google.com/uc?export=download&id=1UqSQoG1GD7wXd8zz6M6hx6bNM-7r1QQm"
+      className="link"
+    >
+      <FaFileDownload style={{ fill: "white" }} />
+      Download CV
+    </a>
     <a
       target="_blank"
       href="https://www.linkedin.com/in/svitlana-tsupryk-b65623a8/"
@@ -186,6 +231,9 @@ export const SkillsInfo = () => (
     </p>
     <p>
       <FaReact /> React, Redux, React Router
+    </p>
+    <p>
+      <SiAstro /> Astro
     </p>
     <p>
       <BiLogoTypescript /> Typescript
