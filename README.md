@@ -1,10 +1,8 @@
-# Svitlana Tsupryk | Interactive 3D Portfolio
+# Interactive 3D Portfolio | THREE.js + React + React Three Fiber + Drei 
 
 An interactive 3D portfolio built with React Three Fiber. Scroll to rotate the scene and click a figure to open a section.
 
-**[Live demo →](https://svitlanatsupryk-jul18.github.io/my_portfolio/)**
-
-![Portfolio preview](public/og-image.jpg)
+# [My portfolio live demo](https://svitlanatsupryk-jul18.github.io/my_portfolio/)
 
 ## Features
 
@@ -51,25 +49,6 @@ npm run build    # production build into dist/
 npm run preview  # preview the production build locally
 npm run lint     # run ESLint
 npm run deploy   # build and publish to GitHub Pages
-```
-
-## Project structure
-
-```
-src/
-  App.jsx               Canvas setup and dev-only Leva panel
-  Experience.jsx        Background, environment lighting and scroll controls
-  components/
-    Scene.jsx           Rotating group, camera parallax, title and Bloom
-    Section.jsx         Section labels, figure placement and section data
-    Ball.jsx            Interactive figure with glow and sparkles
-    Diamond.jsx         Refractive diamond with caustics
-    ActiveCard.jsx      HTML card shown for the active section
-    MainInfo.jsx        Card content for each section
-    Loader.jsx          Loading spinner
-  lib/
-    leva-stub.js        Production replacement for Leva
-public/                 Models, HDR maps, textures and fonts
 ```
 
 ## Contact
