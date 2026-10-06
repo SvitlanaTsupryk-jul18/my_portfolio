@@ -1,4 +1,4 @@
-# Interactive 3D Portfolio | THREE.js + React + React Three Fiber + Drei 
+# Interactive 3D Portfolio | THREE.js + React + R3F + Drei 
 
 An interactive 3D portfolio built with React Three Fiber. Scroll to rotate the scene and click a figure to open a section.
 
