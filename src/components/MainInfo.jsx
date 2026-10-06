@@ -45,7 +45,7 @@ export const ExperienceInfo = () => (
       <p className="job-meta">Checkbox · 01.2026 – 08.2026</p>
       <ul>
         <li>
-          Built a prototype of an animated marketing website with Astro and GSAP
+          Built a prototype of the animated marketing website with Astro and GSAP
         </li>
         <li>Created a custom Ghost blog theme from scratch</li>
       </ul>
@@ -76,7 +76,7 @@ export const ProjectsInfo = () => (
     <p>
       <a target="_blank" href="https://checkbox.ua/blog/" className="link">
         <SiGhost />
-        Ghost blog &#10230;
+        Checkbox Ghost blog &#10230;
       </a>
       <span>Ghost CMS with custom theme</span>
     </p>

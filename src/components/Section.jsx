@@ -3,6 +3,7 @@ import { suspend } from "suspend-react";
 const inter = import("@pmndrs/assets/fonts/inter_bold.woff");
 
 import { Ball } from "./Ball";
+import { BlobShadow } from "./BlobShadow";
 import {
   AboutInfo,
   ExperienceInfo,
@@ -23,6 +24,7 @@ export function Section({
   color,
   sectionGeometry,
   params,
+  shadow,
   ...props
 }) {
   const { size } = useThree();
@@ -70,6 +72,18 @@ export function Section({
         color={color}
         params={params}
       />
+      {shadow && (
+        <BlobShadow
+          position={[
+            Math.sin(angle) * radius * scaleFactor,
+            shadow.height,
+            Math.cos(angle) * radius * scaleFactor,
+          ]}
+          size={shadow.blobSize}
+          opacity={shadow.opacity}
+          color={shadow.color}
+        />
+      )}
     </group>
   );
 }

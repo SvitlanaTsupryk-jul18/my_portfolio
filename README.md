@@ -9,7 +9,8 @@ An interactive 3D portfolio built with React Three Fiber. Scroll to rotate the s
 - **Scroll-driven scene.** Five glass figures orbit a refractive diamond, and scrolling rotates the whole scene in an infinite loop.
 - **Interactive sections.** Clicking a figure opens a card with About, Experience, Projects, Skills or Contacts.
 - **Physically based materials.** Figures use transmission and clearcoat, glow in their own color when active and sparkle with particles.
-- **Diamond with refraction and caustics** rendered from a dedicated environment map.
+- **Refractive diamond** with chromatic aberration, rendered from a dedicated environment map.
+- **Soft blob shadows** under each figure, a cheap fake shadow that needs no lights or shadow maps.
 - **Parallax camera** that follows the pointer with damped easing.
 - **Responsive layout** that rescales the scene on narrow screens.
 - **SEO and social previews** with meta tags, Open Graph and structured data.

@@ -56,6 +56,7 @@ export function Ball({ isActive, sectionGeometry, params, color, ...props }) {
     sparclesSize: { value: 2, min: 0, max: 10, step: 0.1 },
     sparclesSpeed: { value: 1, min: 0, max: 10, step: 0.1 },
     glowIntensity: { value: 2.5, min: 0, max: 6, step: 0.1 },
+    activeClearcoat: { value: 0.2, min: 0, max: 1, step: 0.01 },
   });
 
   return (
@@ -77,7 +78,8 @@ export function Ball({ isActive, sectionGeometry, params, color, ...props }) {
         opacity={config.ballsOpacity}
         thickness={config.thickness}
         reflectivity={config.reflectivity}
-        clearcoat={config.clearcoat}
+        // Clearcoat replaces the glow at grazing angles, so the active figure gets less of it
+        clearcoat={isActive ? config.activeClearcoat : config.clearcoat}
         clearcoatRoughness={config.clearcoatRoughness}
         // Glow in the figure's own color. Intensity must push it above the Bloom threshold
         emissive={color}

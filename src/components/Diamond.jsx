@@ -1,6 +1,5 @@
 import {
   useGLTF,
-  Caustics,
   CubeCamera,
   MeshRefractionMaterial,
 } from "@react-three/drei";
@@ -26,16 +25,7 @@ export function Diamond(props) {
   return (
     <CubeCamera resolution={256} frames={1} envMap={texture}>
       {(texture) => (
-        <Caustics
-          backfaces
-          color={config.color}
-          position={[0, -0.5 * scaleFactor, 0]}
-          lightSource={[2.5, 2.5, -5]}
-          worldRadius={0.1}
-          ior={1.8}
-          backfaceIor={1.1}
-          intensity={0.1}
-        >
+        <group position={[0, -0.5 * scaleFactor, 0]}>
           <mesh castShadow geometry={nodes.Diamond_1_0.geometry} {...props}>
             <MeshRefractionMaterial
               envMap={texture}
@@ -43,7 +33,7 @@ export function Diamond(props) {
               toneMapped={false}
             />
           </mesh>
-        </Caustics>
+        </group>
       )}
     </CubeCamera>
   );

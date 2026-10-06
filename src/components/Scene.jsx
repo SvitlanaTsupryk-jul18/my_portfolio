@@ -51,6 +51,14 @@ export function Scene(props) {
     levels: { value: 8, min: 1, max: 9, step: 1 },
   });
 
+  // Height is in the scene's local space: figures sit at y = -1
+  const shadow = useControls("Shadows", {
+    height: { value: -2.5, min: -5, max: 0, step: 0.05 },
+    opacity: { value: 0.35, min: 0, max: 1, step: 0.01 },
+    color: "#0f4857",
+    blobSize: { value: 2.2, min: 0.5, max: 5, step: 0.1 },
+  });
+
   return (
     <group ref={ref} {...props} onPointerMissed={handleGroupClick}>
       <Center top>
@@ -82,6 +90,7 @@ export function Scene(props) {
           color={item.color}
           sectionGeometry={item.sectionGeometry}
           params={item.params}
+          shadow={shadow}
         />
       ))}
       <EffectComposer>
